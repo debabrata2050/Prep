@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Play Video</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script src="js/navbar.js"></script>
+
+  <!-- Video Section -->
+  <div class="container section">
+    <h5 id="video-title">Loading...</h5>
+    <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe id="video-frame"
+              style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+              frameborder="0" allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      M.Sidenav.init(document.querySelectorAll(".sidenav"));
+
+      const params = new URLSearchParams(window.location.search);
+      const videoId = params.get("id");
+      const title = params.get("title");
+      const subject = params.get("subject");
+
+      if (videoId) {
+        document.getElementById("video-frame").src =
+          `https://www.dailymotion.com/embed/video/${videoId}?autoplay=1`;
+        document.getElementById("video-title").textContent = decodeURIComponent(title || "Untitled");
+      } else {
+        document.getElementById("video-title").textContent = "Video not found.";
+      }
+
+      if (subject) {
+        document.getElementById("subject-name").textContent = decodeURIComponent(subject);
+        document.getElementById("subject-name").href = subject.toLowerCase().replace(/\s+/g, '') + ".html";
+      } else {
+        document.getElementById("subject-name").textContent = "Subject";
+        document.getElementById("subject-name").href = "index.html";
+      }
+    });
+  </script>
+
+</body>
+</html>

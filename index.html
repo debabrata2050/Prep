@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Library - Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container section">
+    <div class="row" id="subject-cards">
+      <!-- Subject cards will be injected here -->
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/subjects.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById("subject-cards");
+
+      subjects.forEach(subject => {
+        const col = document.createElement("div");
+        col.className = "col s12 m6 l4";
+
+        col.innerHTML = `
+          <a href="${subject.link}" class="card-link">
+            <div class="card hoverable">
+              <div class="card-image">
+                <img src="${subject.thumbnail}" alt="${subject.name}">
+              </div>
+              <div class="card-content center-align">
+                <p class="video-title">${subject.name}</p>
+              </div>
+            </div>
+          </a>
+        `;
+
+        container.appendChild(col);
+      });
+    });
+  </script>
+</body>
+</html>
