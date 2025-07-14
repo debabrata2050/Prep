@@ -25,5 +25,11 @@ const videoData = [
     id: "k4h4BW5KxqPQxHDpP4m",
     title: "Ratio and Proportion",
     date: "11-07-2025"
+  },
+  {
+    id: "kBEdTvSbyv24tBDqDT2",
+    title: "Partnership",
+    date: "13-07-2025"
   }
+  
 ];
