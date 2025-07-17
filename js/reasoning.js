@@ -43,7 +43,22 @@ const videoData = [
   },
   {
     id: "kU1QJ5N6I38ANTDqE6C",
-    title: "Coded Blood Relation",
+    title: "Blood Relation Part 2",
     date: "14-07-2025"
+  },
+  {
+    id: "k6zGInD8xBmiFeDs2IA",
+    title: "Coded Blood Relations",
+    date: "15-07-2025"
+  },
+  {
+    id: "k47aq2IiT1sCMiDs2Iw",
+    title: "INEQUALITIES Part 1",
+    date: "16-07-2025"
+  },
+  {
+    id: "k3qlnKYXph3ewgDs2Iy",
+    title: "Inequalities Part 2",
+    date: "17-07-2025"
   }
 ];
