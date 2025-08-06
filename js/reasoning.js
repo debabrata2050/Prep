@@ -60,5 +60,45 @@ const videoData = [
     id: "k3qlnKYXph3ewgDs2Iy",
     title: "Inequalities Part 2",
     date: "17-07-2025"
+  },
+  {
+    id: "k2hUHglpBvsdEuDAiMo",
+    title: "Problem on Ages 1",
+    date: "18-07-2025"
+  },
+  {
+    id: "k4a54OgVhW21v6DAiQs",
+    title: "Problem on Ages 2 & Mixture alligation 1",
+    date: "21-07-2025"
+  },
+  {
+    id: "k5GnXXH5bLgFLIDAiT0",
+    title: "Mixture & Alligation 2",
+    date: "22-07-2025"
+  },
+  {
+    id: "k1LjBs0HMK8f3jDAj0S",
+    title: "Mixture & Alligation 3",
+    date: "23-07-2025"
+  },
+  {
+    id: "k4PzBS5c6e8WJGDAj4g",
+    title: "Mixture & Alligation 4 & Profit, loss and discount 1",
+    date: "24-07-2025"
+  },
+  {
+    id: "k7IDBEX2raeJjnDAj88",
+    title: "Profit, loss and Discount 1",
+    date: "25-07-2025"
+  },
+  {
+    id: "k7vSotseqQuohsDAjjQ",
+    title: "Profit, loss & Discount 3",
+    date: "28-07-2025"
+  },
+  {
+    id: "k22bIeNvgzuEbDDAjo2",
+    title: "Simple & Compound Interest 1",
+    date: "29-07-2025"
   }
 ];
