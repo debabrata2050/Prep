@@ -1,50 +1,49 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const sidenav = document.querySelectorAll('.sidenav');
-  M.Sidenav.init(sidenav);
   loadVideoCards();
 });
 
 function loadVideoCards() {
   const container = document.getElementById("video-list");
-  const subjectName = typeof subject !== "undefined" ? subject : "Subject";
+  const loader = document.getElementById("loader");
 
-  if (typeof videoData === "undefined") {
-    console.error("videoData is not defined.");
-    container.innerHTML = "<p>No videos available.</p>";
+  const params = new URLSearchParams(window.location.search);
+  const subjectKey = params.get("name");
+
+  if (!subjectKey || typeof allVideoData === "undefined" || !allVideoData[subjectKey]) {
+    if (loader) loader.style.display = "none";
+    container.innerHTML = "<p style='text-align:center;color:var(--text-muted);padding:40px;'>No videos available.</p>";
     return;
   }
 
-  videoData.forEach(video => {
-    const col = document.createElement("div");
-    col.className = "col s12 m6 l4";
+  const data = allVideoData[subjectKey];
 
-    const videoLink = `../video.html?id=${video.id}&title=${encodeURIComponent(video.title)}&subject=${encodeURIComponent(subjectName)}`;
+  document.title = data.name + " — Prep";
+  const h = document.getElementById("subject-title");
+  const c = document.getElementById("video-count");
+  if (h) h.textContent = data.name;
+  if (c) c.textContent = `${data.videos.length} video${data.videos.length !== 1 ? 's' : ''}`;
 
-    col.innerHTML = `
-      <a href="${videoLink}" class="card-link">
-        <div class="card hoverable">
-          <div class="card-image">
-            <img src="https://www.dailymotion.com/thumbnail/video/${video.id}" alt="${video.title}">
-          </div>
-          <div class="card-content">
-            <div class="video-info-row">
-              <div class="video-text">
-                <p class="video-title">${video.title}</p>
-                <span class="video-date">${video.date}</span>
-              </div>
-              <div class="arrow-button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" stroke-linejoin="round" stroke-linecap="round" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke="currentColor">
-                  <line y2="12" x2="19" y1="12" x1="5"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </a>
+  data.videos.forEach(v => {
+    const link = `../video.html?id=${v.id}&title=${encodeURIComponent(v.title)}&subject=${encodeURIComponent(data.name)}`;
+
+    const card = document.createElement("a");
+    card.href = link;
+    card.className = "v-card";
+    card.innerHTML = `
+      <div class="thumb-wrap">
+        <img class="thumb" loading="lazy"
+             src="https://www.dailymotion.com/thumbnail/video/${v.id}"
+             alt="${v.title}"
+             onerror="this.onerror=null;this.src='../assets/fallback.jpg';">
+        <div class="play-btn"><div class="play-circle"></div></div>
+      </div>
+      <div class="body">
+        <p class="title">${v.title}</p>
+        <span class="date">${v.date}</span>
+      </div>
     `;
-
-    container.appendChild(col);
+    container.appendChild(card);
   });
-}
 
+  if (loader) loader.style.display = "none";
+}
