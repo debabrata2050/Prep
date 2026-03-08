@@ -16,6 +16,25 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  const marqueeHTML = `
+    <div class="marquee-wrapper" id="global-marquee">
+      <div class="marquee-static-label">⚠️ Disclaimer</div>
+      <div class="marquee-scroll-area">
+        <div class="marquee-content">
+          <span>🍿 Videos are hosted on DailyMotion. If they don't play, try using a VPN! 🌍</span>
+          <span>🍿 Videos are hosted on DailyMotion. If they don't play, try using a VPN! 🌍</span>
+          <span>🍿 Videos are hosted on DailyMotion. If they don't play, try using a VPN! 🌍</span>
+        </div>
+      </div>
+      <button class="close-marquee" id="close-marquee" aria-label="Close alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  `;
+
   const navHTML = `
     <nav class="nav">
       <div class="nav-inner">
@@ -41,10 +60,18 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   `;
 
-  const temp = document.createElement("div");
-  temp.innerHTML = navHTML;
-  while (temp.firstChild) {
-    document.body.insertBefore(temp.firstChild, document.body.firstChild);
+  const headerWrapper = document.createElement("header");
+  headerWrapper.className = "site-header";
+  headerWrapper.innerHTML = marqueeHTML + navHTML;
+  document.body.insertBefore(headerWrapper, document.body.firstChild);
+
+  // Marquee close
+  const closeBtn = document.getElementById("close-marquee");
+  const marquee = document.getElementById("global-marquee");
+  if (closeBtn && marquee) {
+    closeBtn.addEventListener("click", () => {
+      marquee.style.display = "none";
+    });
   }
 
   // Hamburger

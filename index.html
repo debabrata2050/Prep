@@ -11,15 +11,19 @@
 
 <body>
 
-  <div class="hero">
-    <h1>Your exam prep,<br>simplified.</h1>
-    <p>Video lectures for English, Quant, Reasoning & IT — pick a subject to start.</p>
-  </div>
+  <header class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <span class="badge">Academic Excellence</span>
+      <h1>Your exam prep, <br><span class="highlight">simplified.</span></h1>
+      <p>Premium video lectures for non-tech students. Pick a subject to begin your focused study journey.</p>
+    </div>
+  </header>
 
-  <div class="container section-wrap">
-    <p class="section-header">Subjects</p>
-    <div class="grid" id="subject-cards"></div>
-  </div>
+  <main class="container section-wrap">
+    <h2 class="section-title">Explore Subjects</h2>
+    <div class="subjects-grid" id="subject-cards"></div>
+  </main>
 
   <footer class="footer">Prep — built for learners</footer>
 
@@ -33,7 +37,9 @@
         a.href = s.link;
         a.className = "s-card";
         a.innerHTML = `
-          <img class="thumb" loading="lazy" src="${s.thumbnail}" alt="${s.name}">
+          <div class="thumb-wrap">
+            <img class="thumb" loading="lazy" src="${s.thumbnail}" alt="${s.name}">
+          </div>
           <div class="body">
             <span class="name">${s.name}</span>
             <span class="arrow">

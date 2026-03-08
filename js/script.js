@@ -26,22 +26,36 @@ function loadVideoCards() {
   data.videos.forEach(v => {
     const link = `../video.html?id=${v.id}&title=${encodeURIComponent(v.title)}&subject=${encodeURIComponent(data.name)}`;
 
+    const defaultThumb = "../" + data.thumbnail;
+    const dmThumb = `https://www.dailymotion.com/thumbnail/video/${v.id}`;
+
     const card = document.createElement("a");
     card.href = link;
     card.className = "v-card";
     card.innerHTML = `
       <div class="thumb-wrap">
         <img class="thumb" loading="lazy"
-             src="https://www.dailymotion.com/thumbnail/video/${v.id}"
-             alt="${v.title}"
-             onerror="this.onerror=null;this.src='../assets/fallback.jpg';">
+             src="${defaultThumb}"
+             alt="${v.title}">
         <div class="play-btn"><div class="play-circle"></div></div>
       </div>
       <div class="body">
         <p class="title">${v.title}</p>
-        <span class="date">${v.date}</span>
+        <div class="v-meta">
+          <span class="instructor">👨‍🏫 ${data.instructor}</span>
+          <span class="date">${v.date}</span>
+        </div>
       </div>
     `;
+
+    // Fetch DailyMotion thumbnail in the background and replace if successful
+    const imgObj = new Image();
+    imgObj.onload = () => {
+      const imgTarget = card.querySelector('.thumb');
+      if (imgTarget) imgTarget.src = dmThumb;
+    };
+    imgObj.src = dmThumb;
+
     container.appendChild(card);
   });
 

@@ -4,6 +4,7 @@
 const allVideoData = {
     english: {
         name: "English",
+        instructor: "Parth Krishan Upadhyay",
         thumbnail: "assets/english.jpg",
         videos: [
             { id: "k5Pnp2pF17eWWuDoTEg", title: "SENTENCE BASIC", date: "01-07-2025" },
@@ -32,6 +33,7 @@ const allVideoData = {
     },
     quant: {
         name: "Quant",
+        instructor: "Rahul Meena",
         thumbnail: "assets/quant.jpg",
         videos: [
             { id: "k1EIt8WXE98CDtDpv04", title: "Quadratic Equation part 2", date: "07-07-2025" },
@@ -55,6 +57,7 @@ const allVideoData = {
     },
     reasoning: {
         name: "Reasoning",
+        instructor: "Neelam Gahlot",
         thumbnail: "assets/reasoning.png",
         videos: [
             { id: "k1Xjlk9jHIqmKwDotl0", title: "Coding-Decoding_Class_1", date: "30-06-2025" },
@@ -68,17 +71,25 @@ const allVideoData = {
             { id: "kU1QJ5N6I38ANTDqE6C", title: "Blood Relation Part 2", date: "14-07-2025" },
             { id: "k6zGInD8xBmiFeDs2IA", title: "Coded Blood Relations", date: "15-07-2025" },
             { id: "k47aq2IiT1sCMiDs2Iw", title: "INEQUALITIES Part 1", date: "16-07-2025" },
-            { id: "k3qlnKYXph3ewgDs2Iy", title: "Inequalities Part 2", date: "17-07-2025" }
+            { id: "k3qlnKYXph3ewgDs2Iy", title: "Inequalities Part 2", date: "17-07-2025" },
+            { id: "k1oJswPhBijafkF5IQw", title: "CODED Inequalities PART 2", date: "18-07-2025" }
         ]
     },
     it: {
         name: "IT",
+        instructor: "Vivek Kumar Pandey",
         thumbnail: "assets/it.jpg",
         videos: [
             { id: "k3Iwr7HEPX1ceYF3xVy", title: "Orientation Class Videos", date: "05-09-2025" },
             { id: "k32UD2AJi6swA3F3xVw", title: "DATABASE MANAGEMENT SYSTEM_Class_1", date: "08-09-2025" },
             { id: "k5ZHgBvvMW01vqF3yUy", title: "DATABASE MANAGEMENT SYSTEM_Class_2", date: "09-09-2025" },
-            { id: "kJDTBpBtmpa4BbF3zbg", title: "DATABASE MANAGEMENT SYSTEM_Class_3", date: "10-09-2025" }
+            { id: "kJDTBpBtmpa4BbF3zbg", title: "DATABASE MANAGEMENT SYSTEM_Class_3", date: "10-09-2025" },
+            { id: "k2rpLgRc0wxyu3F5H0k", title: "DATABASE MANAGEMENT SYSTEM_Class_4", date: "11-09-2025" },
+            { id: "k4UaHCDfeFALLKF5H4K", title: "DATABASE MANAGEMENT SYSTEM_Class_5", date: "12-09-2025" },
+            { id: "k4rGjAqkbqmlesF5I1Q", title: "DATABASE MANAGEMENT SYSTEM_Class_6", date: "15-09-2025" },
+            { id: "k1N1wcarHIHqfSF5I1O", title: "DATABASE MANAGEMENT SYSTEM_Class_7", date: "16-09-2025" },
+            { id: "k2013n9Q94NahMF5I1S", title: "DATABASE MANAGEMENT SYSTEM_Class_8", date: "17-09-2025" },
+            { id: "k6tNGmyuO94fbBF5IQu", title: "DATABASE MANAGEMENT SYSTEM_Class_9", date: "19-09-2025" }
         ]
     }
 };
