@@ -52,7 +52,9 @@ const allVideoData = {
             { id: "k4PzBS5c6e8WJGDAj4g", title: "Mixture & Alligation 4 & Profit, loss and discount 1", date: "24-07-2025" },
             { id: "k7IDBEX2raeJjnDAj88", title: "Profit, loss and Discount 1", date: "25-07-2025" },
             { id: "k7vSotseqQuohsDAjjQ", title: "Profit, loss & Discount 3", date: "28-07-2025" },
-            { id: "k22bIeNvgzuEbDDAjo2", title: "Simple & Compound Interest 1", date: "29-07-2025" }
+            { id: "k22bIeNvgzuEbDDAjo2", title: "Simple & Compound Interest 1", date: "29-07-2025" },
+            { id: "k65PRKgdwJ3w6rF8ViC", title: "Simple & Compound Interest 2", date: "30-07-2025" },
+            { id: "k4QUGAGyXbyCP7F8ViA", title: "Simple & Compound Interest 3", date: "31-07-2025" },
         ]
     },
     reasoning: {
@@ -72,7 +74,11 @@ const allVideoData = {
             { id: "k6zGInD8xBmiFeDs2IA", title: "Coded Blood Relations", date: "15-07-2025" },
             { id: "k47aq2IiT1sCMiDs2Iw", title: "INEQUALITIES Part 1", date: "16-07-2025" },
             { id: "k3qlnKYXph3ewgDs2Iy", title: "Inequalities Part 2", date: "17-07-2025" },
-            { id: "k1oJswPhBijafkF5IQw", title: "CODED Inequalities PART 2", date: "18-07-2025" }
+            { id: "k1oJswPhBijafkF5IQw", title: "CODED Inequalities PART 2", date: "18-07-2025" },
+            { id: "k2rMDkoXc2pcPoF8UI0", title: "Alphabet Test Part 1", date: "21-07-2025" },
+            { id: "k2BqnGQDRnKo6VF8UQk", title: "Alphabet Test Part 2", date: "22-07-2025" },
+            { id: "k4XrxCMNK96D4HF8UQm", title: "Alphanumeric Series Part 1", date: "23-07-2025" },
+            { id: "k3LPyO8iaBjOo9F8UAK", title: "Number Symbol Coding", date: "29-07-2025" },
         ]
     },
     it: {

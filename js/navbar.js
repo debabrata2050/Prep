@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <ul class="nav-links">
           <li><a href="${prefix}index.html">Home</a></li>
           ${desktopLinks}
+          <li><a href="${prefix}pages/pdfs.html?name=reasoning">PDFs</a></li>
         </ul>
         <div style="display:flex;align-items:center;gap:8px;">
           <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <div class="nav-mobile" id="nav-mobile">
       <a href="${prefix}index.html">Home</a>
       ${mobileLinks}
+      <a href="${prefix}pages/pdfs.html?name=reasoning">PDFs</a>
     </div>
   `;
 
@@ -64,6 +66,14 @@ document.addEventListener("DOMContentLoaded", function () {
   headerWrapper.className = "site-header";
   headerWrapper.innerHTML = marqueeHTML + navHTML;
   document.body.insertBefore(headerWrapper, document.body.firstChild);
+
+  // Global Footer Injection
+  if (!document.querySelector('.footer')) {
+    const footer = document.createElement("footer");
+    footer.className = "footer";
+    footer.textContent = "Prep — built for learners";
+    document.body.appendChild(footer);
+  }
 
   // Marquee close
   const closeBtn = document.getElementById("close-marquee");

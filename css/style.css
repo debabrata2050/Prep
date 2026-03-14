@@ -850,3 +850,138 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
+
+/* ===== PDF GALLERY STYLES ===== */
+.month-section {
+  margin-bottom: 48px;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.month-header {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pdf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.p-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.p-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  background: var(--bg-hover);
+  box-shadow: var(--shadow-lg);
+}
+
+.p-icon-wrap {
+  width: 48px;
+  height: 48px;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.p-icon-wrap svg {
+  width: 24px;
+  height: 24px;
+}
+
+.p-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.p-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.p-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.p-date {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.p-download {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ===== SPECIAL PDF CARD STYLES ===== */
+.pdf-card-special {
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
+}
+
+.pdf-card-special:hover {
+  border-color: var(--accent);
+  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+}
+
+.v-badge,
+.pdf-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  color: #ffffff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  z-index: 5;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.v-badge {
+  background: #0ea5e9; /* Light blue for videos */
+}
+
+.pdf-badge {
+  background: var(--accent); /* Dark blue for PDFs */
+}
+
+@media (max-width: 640px) {
+  .pdf-grid {
+    grid-template-columns: 1fr;
+  }
+}

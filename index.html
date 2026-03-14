@@ -20,18 +20,28 @@
     </div>
   </header>
 
-  <main class="container section-wrap">
-    <h2 class="section-title">Explore Subjects</h2>
-    <div class="subjects-grid" id="subject-cards"></div>
+  <main class="container">
+    <section class="section-wrap">
+      <h2 class="section-title">Explore Subjects</h2>
+      <div class="subjects-grid" id="subject-cards"></div>
+    </section>
+
+    <section class="section-wrap" style="padding-top: 0;">
+      <h2 class="section-title">Explore PDFs</h2>
+      <div class="subjects-grid" id="pdf-cards"></div>
+    </section>
   </main>
 
-  <footer class="footer">Prep — built for learners</footer>
+
 
   <script src="js/videoData.js"></script>
   <script src="js/navbar.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const container = document.getElementById("subject-cards");
+      const subjectContainer = document.getElementById("subject-cards");
+      const pdfContainer = document.getElementById("pdf-cards");
+
+      // Render Subjects
       subjects.forEach(s => {
         const a = document.createElement("a");
         a.href = s.link;
@@ -39,6 +49,7 @@
         a.innerHTML = `
           <div class="thumb-wrap">
             <img class="thumb" loading="lazy" src="${s.thumbnail}" alt="${s.name}">
+            <div class="v-badge">VIDEO LECTURES</div>
           </div>
           <div class="body">
             <span class="name">${s.name}</span>
@@ -50,8 +61,29 @@
             </span>
           </div>
         `;
-        container.appendChild(a);
+        subjectContainer.appendChild(a);
       });
+
+      // Render PDF Section Card
+      const pCard = document.createElement("a");
+      pCard.href = "pages/pdfs.html?name=reasoning";
+      pCard.className = "s-card pdf-card-special";
+      pCard.innerHTML = `
+        <div class="thumb-wrap">
+          <img class="thumb" loading="lazy" src="assets/pdf-thumb.png" alt="PDF Notes">
+          <div class="pdf-badge">PDF NOTES</div>
+        </div>
+        <div class="body">
+          <span class="name">Reasoning PDFs</span>
+          <span class="arrow">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+          </span>
+        </div>
+      `;
+      pdfContainer.appendChild(pCard);
     });
   </script>
 </body>

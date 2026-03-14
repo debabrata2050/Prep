@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Subject — Prep</title>
-    <meta name="description" content="Video lectures for exam preparation.">
+    <title>PDF Gallery — Prep</title>
+    <meta name="description" content="Access and download exam preparation PDFs.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -12,22 +12,25 @@
 <body>
 
     <div class="page-header">
-        <h1 id="subject-title">Loading...</h1>
-        <p class="count" id="video-count"></p>
+        <h1 id="pdf-title">Reasoning PDFs</h1>
+        <p class="count" id="pdf-count">Loading...</p>
     </div>
 
     <div class="container section-wrap">
         <div id="loader" class="loader">
             <div class="spinner"></div>
         </div>
-        <div class="video-grid" id="video-list"></div>
+        <div id="pdf-container">
+            <!-- Content will be injected by pdfScript.js -->
+        </div>
     </div>
 
 
 
     <script src="../js/videoData.js"></script>
+    <script src="../js/pdfData.js"></script>
     <script src="../js/navbar.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="../js/pdfScript.js"></script>
 </body>
 
 </html>
