@@ -61,41 +61,86 @@ const allVideoData = {
         name: "Reasoning",
         instructor: "Neelam Gahlot",
         thumbnail: "assets/reasoning.png",
-        videos: [
-            { id: "k1Xjlk9jHIqmKwDotl0", title: "Coding-Decoding_Class_1", date: "30-06-2025" },
-            { id: "k3wMtc40iQxgCkDoSSM", title: "Coding-Decoding_Class_2", date: "03-07-2025" },
-            { id: "k71ffvpe4rkqOkDoSXW", title: "Coding-Decoding_Class_3", date: "04-07-2025" },
-            { id: "kSb4jfB2VpzPlbDoTda", title: "Coding part 4", date: "07-07-2025" },
-            { id: "k3VzoppS4jAlZCDoTkS", title: "Direction & Distance_Class_1 +2", date: "08-07-2025" },
-            { id: "k57Jp2Ic295aiPDoTqu", title: "Direction & Distance_Class_3", date: "09-07-2025" },
-            { id: "k6UXwNmLVDgaXgDpt6A", title: "Blood Relations 1", date: "10-07-2025" },
-            { id: "k5ZhJLDcujKfuhDpOGQ", title: "Blood Relations 2", date: "11-07-2025" },
-            { id: "kU1QJ5N6I38ANTDqE6C", title: "Blood Relation Part 2", date: "14-07-2025" },
-            { id: "k6zGInD8xBmiFeDs2IA", title: "Coded Blood Relations", date: "15-07-2025" },
-            { id: "k47aq2IiT1sCMiDs2Iw", title: "INEQUALITIES Part 1", date: "16-07-2025" },
-            { id: "k3qlnKYXph3ewgDs2Iy", title: "Inequalities Part 2", date: "17-07-2025" },
-            { id: "k1oJswPhBijafkF5IQw", title: "CODED Inequalities PART 2", date: "18-07-2025" },
-            { id: "k2rMDkoXc2pcPoF8UI0", title: "Alphabet Test Part 1", date: "21-07-2025" },
-            { id: "k2BqnGQDRnKo6VF8UQk", title: "Alphabet Test Part 2", date: "22-07-2025" },
-            { id: "k4XrxCMNK96D4HF8UQm", title: "Alphanumeric Series Part 1", date: "23-07-2025" },
-            { id: "k3LPyO8iaBjOo9F8UAK", title: "Number Symbol Coding", date: "29-07-2025" },
+        categories: [
+            {
+                name: "Coding-Decoding & Series",
+                videos: [
+                    { id: "k1Xjlk9jHIqmKwDotl0", title: "Coding-Decoding - 1", date: "30-06-2025" },
+                    { id: "k3wMtc40iQxgCkDoSSM", title: "Coding-Decoding - 2", date: "03-07-2025" },
+                    { id: "k71ffvpe4rkqOkDoSXW", title: "Coding-Decoding - 3", date: "04-07-2025" },
+                    { id: "kSb4jfB2VpzPlbDoTda", title: "Coding-Decoding - 4", date: "07-07-2025" },
+                    { id: "k2rMDkoXc2pcPoF8UI0", title: "Alphabet Test - 1", date: "21-07-2025" },
+                    { id: "k2BqnGQDRnKo6VF8UQk", title: "Alphabet Test - 2", date: "22-07-2025" },
+                    { id: "k4XrxCMNK96D4HF8UQm", title: "Alphanumeric Series - 1", date: "23-07-2025" },
+                    { id: "k62uLlrMrWlhUkFfhZK", title: "Alphanumeric Series - 2", date: "24-07-2025" },
+                    { id: "k4E2vYn9ou2WcDFfhZM", title: "Alphanumeric Series - 3", date: "25-07-2025" },
+                    { id: "k3LPyO8iaBjOo9F8UAK", title: "Number Symbol Coding", date: "29-07-2025" }
+                ]
+            },
+            {
+                name: "Blood Relation & Inequalities",
+                videos: [
+                    { id: "k5ZhJLDcujKfuhDpOGQ", title: "Blood Relations - 1", date: "11-07-2025" },
+                    { id: "kU1QJ5N6I38ANTDqE6C", title: "Blood Relations - 2", date: "14-07-2025" },
+                    { id: "k6zGInD8xBmiFeDs2IA", title: "Coded Blood Relations", date: "15-07-2025" }
+                ]
+            },
+            {
+                name: "Inequalities",
+                videos: [
+                    { id: "k47aq2IiT1sCMiDs2Iw", title: "Inequalities - 1", date: "16-07-2025" },
+                    { id: "k3qlnKYXph3ewgDs2Iy", title: "Inequalities - 2", date: "17-07-2025" },
+                    { id: "k1oJswPhBijafkF5IQw", title: "Coded Inequalities", date: "18-07-2025" },
+                    { id: "k2UYpMesUc8XeFFfkCC", title: "Practice Inequalities", date: "18-08-2025" }
+                ]
+            },
+            {
+                name: "Direction & Distance",
+                videos: [
+                    { id: "k3VzoppS4jAlZCDoTkS", title: "Direction & Distance - 1", date: "08-07-2025" },
+                    { id: "k57Jp2Ic295aiPDoTqu", title: "Direction & Distance - 2", date: "09-07-2025" },
+                    { id: "k6UXwNmLVDgaXgDpt6A", title: "Coded Directions - 1", date: "10-07-2025" },
+                    { id: "k37WHxZ1OBY1ATFfiMe", title: "Coded Directions - 2", date: "26-07-2025" }
+                ]
+            }
         ]
     },
     it: {
         name: "IT",
         instructor: "Vivek Kumar Pandey",
         thumbnail: "assets/it.jpg",
-        videos: [
-            { id: "k3Iwr7HEPX1ceYF3xVy", title: "Orientation Class Videos", date: "05-09-2025" },
-            { id: "k32UD2AJi6swA3F3xVw", title: "DATABASE MANAGEMENT SYSTEM_Class_1", date: "08-09-2025" },
-            { id: "k5ZHgBvvMW01vqF3yUy", title: "DATABASE MANAGEMENT SYSTEM_Class_2", date: "09-09-2025" },
-            { id: "kJDTBpBtmpa4BbF3zbg", title: "DATABASE MANAGEMENT SYSTEM_Class_3", date: "10-09-2025" },
-            { id: "k2rpLgRc0wxyu3F5H0k", title: "DATABASE MANAGEMENT SYSTEM_Class_4", date: "11-09-2025" },
-            { id: "k4UaHCDfeFALLKF5H4K", title: "DATABASE MANAGEMENT SYSTEM_Class_5", date: "12-09-2025" },
-            { id: "k4rGjAqkbqmlesF5I1Q", title: "DATABASE MANAGEMENT SYSTEM_Class_6", date: "15-09-2025" },
-            { id: "k1N1wcarHIHqfSF5I1O", title: "DATABASE MANAGEMENT SYSTEM_Class_7", date: "16-09-2025" },
-            { id: "k2013n9Q94NahMF5I1S", title: "DATABASE MANAGEMENT SYSTEM_Class_8", date: "17-09-2025" },
-            { id: "k6tNGmyuO94fbBF5IQu", title: "DATABASE MANAGEMENT SYSTEM_Class_9", date: "19-09-2025" }
+        categories: [
+            {
+                name: "Orientation",
+                videos: [
+                    { id: "k3Iwr7HEPX1ceYF3xVy", title: "Orientation Class Videos", date: "05-09-2025" }
+                ]
+            },
+            {
+                name: "Database Management System",
+                videos: [
+                    { id: "k32UD2AJi6swA3F3xVw", title: "Database Management System - 1", date: "08-09-2025" },
+                    { id: "k5ZHgBvVMW01vqF3yUy", title: "Database Management System - 2", date: "09-09-2025" },
+                    { id: "kJDTBpBtmpa4BbF3zbg", title: "Database Management System - 3", date: "10-09-2025" },
+                    { id: "k2rpLgRc0wxyu3F5H0k", title: "Database Management System - 4", date: "11-09-2025" },
+                    { id: "k4UaHCDfeFALLKF5H4K", title: "Database Management System - 5", date: "12-09-2025" },
+                    { id: "k4rGjAqkbqmlesF5I1Q", title: "Database Management System - 6", date: "15-09-2025" },
+                    { id: "k1N1wcarHIHqfSF5I1O", title: "Database Management System - 7", date: "16-09-2025" },
+                    { id: "k2013n9Q94NahMF5I1S", title: "Database Management System - 8", date: "17-09-2025" },
+                    { id: "k6tNGmyuO94fbBF5IQu", title: "Database Management System - 9", date: "19-09-2025" }
+                ]
+            },
+            {
+                name: "Data Communication & Network",
+                videos: [
+                    { id: "k5AAjjObn39AT5Ffj0u", title: "Data Communication & Network - 1", date: "22-09-2025" },
+                    { id: "k6Pu6UNpsKZqSmFfjda", title: "Data Communication & Network - 2", date: "23-09-2025" },
+                    { id: "k7EoYF22tUIL0XFfjpG", title: "Data Communication & Network - 3", date: "24-09-2025" },
+                    { id: "k32B23sjapA1bMFfjDy", title: "Data Communication & Network - 4", date: "25-09-2025" },
+                    { id: "k7xXyMwbVWhanNFfjU0", title: "Internet & Network Security - 1", date: "26-09-2025" },
+                    { id: "k3ptVAgBPRO2ozFfk88", title: "Internet & Network Security - 2", date: "29-09-2025" }
+                ]
+            }
         ]
     }
 };

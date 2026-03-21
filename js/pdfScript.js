@@ -43,20 +43,33 @@ function loadPdfs() {
         const section = document.createElement("section");
         section.className = "month-section";
         
-        const header = document.createElement("h3");
-        header.className = "month-header";
-        header.textContent = monthYear;
-        section.appendChild(header);
+        section.innerHTML = `
+            <div class="month-header">
+                <h3>${monthYear}</h3>
+                <button class="month-toggle" aria-label="Toggle Section">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+            </div>
+            <div class="pdf-grid-wrapper">
+                <div class="pdf-grid"></div>
+            </div>
+        `;
+        
+        const header = section.querySelector(".month-header");
+        const grid = section.querySelector(".pdf-grid");
 
-        const grid = document.createElement("div");
-        grid.className = "pdf-grid";
+        // Toggle collapse
+        header.addEventListener("click", () => {
+            section.classList.toggle("is-collapsed");
+        });
 
         grouped[monthYear].forEach(pdf => {
             const card = createPdfCard(pdf, data);
             grid.appendChild(card);
         });
 
-        section.appendChild(grid);
         container.appendChild(section);
     });
 
