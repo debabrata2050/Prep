@@ -33,25 +33,45 @@ function loadVideoCards() {
 
   // Helper to render a video card
   const createVideoCard = (v, instructor, thumbnail) => {
-    const link = `../video.html?id=${v.id}&title=${encodeURIComponent(v.title)}&subject=${encodeURIComponent(data.name)}`;
+    const pdfParam = v.pdf ? `&pdf=${encodeURIComponent(v.pdf)}` : "";
+    const link = `../video.html?id=${v.id}&title=${encodeURIComponent(v.title)}&subject=${encodeURIComponent(data.name)}${pdfParam}`;
     const defaultThumb = "../" + thumbnail;
     const dmThumb = `https://www.dailymotion.com/thumbnail/video/${v.id}`;
 
-    const card = document.createElement("a");
-    card.href = link;
+    const pdfButtonHtml = v.pdf ? `
+      <a href="../pages/view-pdf.html?url=${encodeURIComponent(v.pdf)}&title=${encodeURIComponent(v.title + ' Notes')}" 
+         class="v-pdf-btn" 
+         title="View PDF Notes"
+         aria-label="View PDF Notes">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+      </a>
+    ` : "";
+
+    const card = document.createElement("div");
     card.className = "v-card";
     card.innerHTML = `
-      <div class="thumb-wrap">
+      <a href="${link}" class="thumb-wrap" aria-label="Play ${v.title}">
         <img class="thumb" loading="lazy"
              src="${defaultThumb}"
              alt="${v.title}">
         <div class="play-btn"><div class="play-circle"></div></div>
-      </div>
+      </a>
       <div class="body">
-        <p class="title">${v.title}</p>
+        <a href="${link}" class="title-link">
+          <p class="title">${v.title}</p>
+        </a>
         <div class="v-meta">
           <span class="instructor">👨‍🏫 ${instructor}</span>
-          <span class="date">${v.date}</span>
+          <div class="meta-right">
+            <span class="date">${v.date}</span>
+            ${pdfButtonHtml}
+          </div>
         </div>
       </div>
     `;

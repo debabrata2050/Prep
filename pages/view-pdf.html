@@ -59,7 +59,7 @@
         <div class="breadcrumb">
             <a href="../index.html">Home</a>
             <span class="sep">›</span>
-            <a href="pdfs.html?name=reasoning">Reasoning PDFs</a>
+            <a href="javascript:history.back()" id="pdf-parent-breadcrumb">Back</a>
             <span class="sep">›</span>
             <span class="current" id="pdf-breadcrumb">View PDF</span>
         </div>
@@ -86,11 +86,11 @@
             const title = params.get("title");
 
             if (pdfUrl) {
-                // Using Google Docs Viewer for better cross-browser compatibility if needed, 
-                // but standard iframe for local/direct PDFs is often fine.
-                // For now, direct iframe.
-                document.getElementById("pdf-frame").src = `../${pdfUrl}`;
-                document.getElementById("download-link").href = `../${pdfUrl}`;
+                const resolvedUrl = (pdfUrl.startsWith("http://") || pdfUrl.startsWith("https://") || pdfUrl.startsWith("/"))
+                    ? pdfUrl
+                    : `../${pdfUrl}`;
+                document.getElementById("pdf-frame").src = resolvedUrl;
+                document.getElementById("download-link").href = resolvedUrl;
                 document.getElementById("pdf-viewer-title").textContent = decodeURIComponent(title || "Untitled PDF");
                 document.getElementById("pdf-breadcrumb").textContent = decodeURIComponent(title || "View PDF");
             } else {

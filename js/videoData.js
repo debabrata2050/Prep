@@ -1,5 +1,6 @@
 // Consolidated video data — single source of truth
 // To add a new subject: just add a new key here + a thumbnail in assets/
+// To attach a PDF to any video: add pdf: "pdf/your_file.pdf" (or full URL)
 
 const allVideoData = {
     english: {
@@ -55,6 +56,9 @@ const allVideoData = {
             { id: "k22bIeNvgzuEbDDAjo2", title: "Simple & Compound Interest 1", date: "29-07-2025" },
             { id: "k65PRKgdwJ3w6rF8ViC", title: "Simple & Compound Interest 2", date: "30-07-2025" },
             { id: "k4QUGAGyXbyCP7F8ViA", title: "Simple & Compound Interest 3", date: "31-07-2025" },
+            { id: "k3QZMAMcKdQ2TKMxNtU", title: "Simple & Compound Interest 4", date: "01-08-2025" },
+            { id: "k4tODUXLZRqadYMxNSS", title: "Pipe and Cistern 1", date: "04-08-2025", pdf: "pdf/quant/94016_4736564_lc.pdf" },
+            { id: "k2pfhkytEmPGmiMyd7Y", title: "Pipe and Cistern 2 and SPEED, TIME, DISTANCE, TRAIN Basics", date: "05-08-2025" },
         ]
     },
     reasoning: {

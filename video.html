@@ -21,7 +21,26 @@
     </div>
     <h2 class="player-title" id="video-title">Loading...</h2>
     <div class="frame-wrap">
-      <iframe id="video-frame" allowfullscreen allow="autoplay"></iframe>
+      <iframe id="video-frame" allowfullscreen allow="autoplay" referrerpolicy="no-referrer"></iframe>
+    </div>
+
+    <!-- Video toolbar: PDF attachment & Dailymotion fallback -->
+    <div class="video-toolbar">
+      <a href="#" id="view-pdf-btn" class="action-btn pdf-action-btn" style="display: none;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+        </svg>
+        <span>View Attached PDF</span>
+      </a>
+      <a href="#" id="open-dm-btn" class="action-btn dm-action-btn" target="_blank" rel="noopener noreferrer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+          <polyline points="15 3 21 3 21 9"></polyline>
+          <line x1="10" y1="14" x2="21" y2="3"></line>
+        </svg>
+        <span>Watch on Dailymotion</span>
+      </a>
     </div>
   </div>
 
@@ -35,13 +54,46 @@
       const videoId = params.get("id");
       const title = params.get("title");
       const subject = params.get("subject");
+      let pdfUrl = params.get("pdf");
+
+      // Auto-resolve PDF from allVideoData if not explicitly in URL params
+      if (!pdfUrl && videoId && typeof allVideoData !== "undefined") {
+        for (const key of Object.keys(allVideoData)) {
+          const sObj = allVideoData[key];
+          let found = null;
+          if (sObj.videos) {
+            found = sObj.videos.find(v => v.id === videoId);
+          } else if (sObj.categories) {
+            for (const cat of sObj.categories) {
+              found = cat.videos.find(v => v.id === videoId);
+              if (found) break;
+            }
+          }
+          if (found && found.pdf) {
+            pdfUrl = found.pdf;
+            break;
+          }
+        }
+      }
 
       if (videoId && /^[a-zA-Z0-9]+$/.test(videoId)) {
         document.getElementById("video-frame").src =
           `https://www.dailymotion.com/embed/video/${videoId}?autoplay=1`;
         document.getElementById("video-title").textContent = decodeURIComponent(title || "Untitled");
+
+        const dmBtn = document.getElementById("open-dm-btn");
+        if (dmBtn) {
+          dmBtn.href = `https://www.dailymotion.com/video/${videoId}`;
+        }
       } else {
         document.getElementById("video-title").textContent = "Video not found.";
+      }
+
+      // Configure attached PDF button if available
+      const pdfBtn = document.getElementById("view-pdf-btn");
+      if (pdfBtn && pdfUrl) {
+        pdfBtn.href = `pages/view-pdf.html?url=${encodeURIComponent(pdfUrl)}&title=${encodeURIComponent((title || 'Lecture') + ' Notes')}`;
+        pdfBtn.style.display = "inline-flex";
       }
 
       const bc = document.getElementById("subject-breadcrumb");
