@@ -57,6 +57,7 @@ const allVideoData = {
             { id: "k65PRKgdwJ3w6rF8ViC", title: "Simple & Compound Interest 2", date: "30-07-2025" },
             { id: "k4QUGAGyXbyCP7F8ViA", title: "Simple & Compound Interest 3", date: "31-07-2025" },
             { id: "k3QZMAMcKdQ2TKMxNtU", title: "Simple & Compound Interest 4", date: "01-08-2025" },
+            { id: "k5ksVcvPO6xT1aMA4ie", title: "3 hrs Special Class - Time & Work", date: "02-08-2025", pdf: "pdf/quant/94016_4736562_lc.pdf" },
             { id: "k4tODUXLZRqadYMxNSS", title: "Pipe and Cistern 1", date: "04-08-2025", pdf: "pdf/quant/94016_4736564_lc.pdf" },
             { id: "k2pfhkytEmPGmiMyd7Y", title: "Pipe and Cistern 2 and SPEED, TIME, DISTANCE, TRAIN Basics", date: "05-08-2025", pdf: "pdf/quant/94016_4736565_lc.pdf" },
             { id: "k3leXlbojwseBzMzSKi", title: "Quantitative Aptitude Class 2", date: "05-08-2025", pdf: "pdf/quant/95380_4741397_lc.pdf" },
@@ -144,9 +145,10 @@ const allVideoData = {
                     { id: "k5AAjjObn39AT5Ffj0u", title: "Data Communication & Network - 1", date: "22-09-2025" },
                     { id: "k6Pu6UNpsKZqSmFfjda", title: "Data Communication & Network - 2", date: "23-09-2025" },
                     { id: "k7EoYF22tUIL0XFfjpG", title: "Data Communication & Network - 3", date: "24-09-2025" },
-                    { id: "k32B23sjapA1bMFfjDy", title: "Data Communication & Network - 4", date: "25-09-2025" },
-                    { id: "k7xXyMwbVWhanNFfjU0", title: "Internet & Network Security - 1", date: "26-09-2025" },
-                    { id: "k3ptVAgBPRO2ozFfk88", title: "Internet & Network Security - 2", date: "29-09-2025" }
+                    { id: "k32B23sjapA1bMFfjDy", title: "Data Communication & Network - 4", date: "25-09-2025", pdf: "pdf/it/97070_4757334_lc.pdf" },
+                    { id: "k7xXyMwbVWhanNFfjU0", title: "Internet & Network Security - 1", date: "26-09-2025", pdf: "pdf/it/97070_4757338_lc.pdf" },
+                    { id: "k3ptVAgBPRO2ozFfk88", title: "Internet & Network Security - 2", date: "29-09-2025", pdf: "pdf/it/97070_4757336_lc.pdf" },
+                    { id: "kMrM9bkzyGXYGfMA7ou", title: "Internet & Network Security - 3", date: "30-09-2025", pdf: "pdf/it/97070_4757337_lc.pdf" }
                 ]
             }
         ]
