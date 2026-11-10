@@ -58,7 +58,11 @@ const allVideoData = {
             { id: "k4QUGAGyXbyCP7F8ViA", title: "Simple & Compound Interest 3", date: "31-07-2025" },
             { id: "k3QZMAMcKdQ2TKMxNtU", title: "Simple & Compound Interest 4", date: "01-08-2025" },
             { id: "k4tODUXLZRqadYMxNSS", title: "Pipe and Cistern 1", date: "04-08-2025", pdf: "pdf/quant/94016_4736564_lc.pdf" },
-            { id: "k2pfhkytEmPGmiMyd7Y", title: "Pipe and Cistern 2 and SPEED, TIME, DISTANCE, TRAIN Basics", date: "05-08-2025" },
+            { id: "k2pfhkytEmPGmiMyd7Y", title: "Pipe and Cistern 2 and SPEED, TIME, DISTANCE, TRAIN Basics", date: "05-08-2025", pdf: "pdf/quant/94016_4736565_lc.pdf" },
+            { id: "k3leXlbojwseBzMzSKi", title: "Quantitative Aptitude Class 2", date: "05-08-2025", pdf: "pdf/quant/95380_4741397_lc.pdf" },
+            { id: "k4rvdtvb0BbxjgMzSKa", title: "SPEED, TIME, DISTANCE, TRAIN 1", date: "06-08-2025", pdf: "pdf/quant/94016_4736566_lc.pdf" },
+            { id: "kTQ5AqZqpwHVgtMzSKe", title: "Quantitative Aptitude Class 3", date: "06-08-2025", pdf: "pdf/quant/95380_4741398_lc.pdf" },
+            { id: "k6vHnVaRotXwPEMzUqC", title: "SPEED, TIME, DISTANCE, TRAIN 2", date: "07-08-2025", pdf: "pdf/quant/94016_4736567_lc.pdf" },
         ]
     },
     reasoning: {

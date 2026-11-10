@@ -12,11 +12,20 @@
 <body>
 
   <header class="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-content">
-      <span class="badge">Academic Excellence</span>
-      <h1>Your exam prep, <br><span class="highlight">simplified.</span></h1>
-      <p>Premium video lectures for non-tech students. Pick a subject to begin your focused study journey.</p>
+    <div class="hero-layout">
+      <div class="hero-text-col">
+        <h1 class="hero-headline">IBPS SO video lectures &amp; chapter notes.</h1>
+        <p class="hero-subhead">Comprehensive preparation for IBPS SO — English, Quantitative Aptitude, Reasoning, and
+          IT with curated video classes and downloadable notes.</p>
+        <div class="hero-cta-wrap">
+          <a href="#subject-cards" class="btn-primary">Browse All Subjects</a>
+        </div>
+      </div>
+      <div class="hero-preview-col">
+        <div class="lecture-scatter-stage" id="hero-lecture-scatter">
+          <!-- Scatter cards generated dynamically on reload -->
+        </div>
+      </div>
     </div>
   </header>
 
@@ -40,20 +49,120 @@
     document.addEventListener('DOMContentLoaded', () => {
       const subjectContainer = document.getElementById("subject-cards");
       const pdfContainer = document.getElementById("pdf-cards");
+      const stackContainer = document.getElementById("hero-lecture-stack");
 
-      // Render Subjects
-      subjects.forEach(s => {
-        const a = document.createElement("a");
-        a.href = s.link;
-        a.className = "s-card";
-        a.innerHTML = `
+      // Generate Dynamic Scattered Cards with Random Coordinates & Rotations
+      const scatterContainer = document.getElementById("hero-lecture-scatter");
+
+      if (scatterContainer && typeof allVideoData !== "undefined") {
+        const subjectsMap = {};
+        Object.keys(allVideoData).forEach(key => {
+          const s = allVideoData[key];
+          const thumb = s.thumbnail;
+          const inst = s.instructor;
+          const vList = [];
+          if (s.videos) {
+            s.videos.forEach(v => vList.push({ ...v, subject: s.name, subjectKey: key, instructor: inst, thumb }));
+          } else if (s.categories) {
+            s.categories.forEach(cat => {
+              cat.videos.forEach(v => vList.push({ ...v, subject: s.name, subjectKey: key, instructor: inst, thumb }));
+            });
+          }
+          if (vList.length > 0) {
+            subjectsMap[key] = vList;
+          }
+        });
+
+        // 7 Spatially distributed sectors across the wide right-side stage
+        // Each sector provides a randomized position & organic tilt without heavy crowding
+        const scatterSectors = [
+          () => ({ top: `${Math.floor(Math.random() * 6)}%`, left: `${Math.floor(Math.random() * 8)}%`, rot: (Math.random() * 10 - 5).toFixed(1) }),
+          () => ({ top: `${Math.floor(Math.random() * 6 + 2)}%`, left: `${Math.floor(Math.random() * 8 + 36)}%`, rot: (Math.random() * 10 - 5).toFixed(1) }),
+          () => ({ top: `${Math.floor(Math.random() * 8)}%`, left: `${Math.floor(Math.random() * 8 + 68)}%`, rot: (Math.random() * 10 - 5).toFixed(1) }),
+          () => ({ top: `${Math.floor(Math.random() * 8 + 36)}%`, left: `${Math.floor(Math.random() * 8 + 18)}%`, rot: (Math.random() * 10 - 5).toFixed(1) }),
+          () => ({ top: `${Math.floor(Math.random() * 8 + 36)}%`, left: `${Math.floor(Math.random() * 8 + 54)}%`, rot: (Math.random() * 10 - 5).toFixed(1) }),
+          () => ({ top: `${Math.floor(Math.random() * 8 + 66)}%`, left: `${Math.floor(Math.random() * 8 + 2)}%`, rot: (Math.random() * 10 - 5).toFixed(1) }),
+          () => ({ top: `${Math.floor(Math.random() * 8 + 66)}%`, left: `${Math.floor(Math.random() * 8 + 60)}%`, rot: (Math.random() * 10 - 5).toFixed(1) })
+        ];
+
+        function renderScatterCards() {
+          scatterContainer.innerHTML = "";
+          const subjectKeys = Object.keys(subjectsMap);
+
+            // Select 7 lectures ensuring representation across all 4 subjects
+            const selected = [];
+
+            // Step 1: Guarantee at least 1 from each of the 4 subjects
+            subjectKeys.forEach(k => {
+              const list = subjectsMap[k];
+              if (list && list.length > 0) {
+                selected.push(list[Math.floor(Math.random() * list.length)]);
+              }
+            });
+
+            // Step 2: Fill remaining 3 spots randomly across subjects
+            const allLectures = [];
+            subjectKeys.forEach(k => allLectures.push(...subjectsMap[k]));
+            const leftoverLectures = allLectures.filter(l => !selected.includes(l));
+            const shuffledLeftover = leftoverLectures.sort(() => 0.5 - Math.random());
+            selected.push(...shuffledLeftover.slice(0, scatterSectors.length - selected.length));
+
+            // Step 3: Shuffle the sectors so subjects don't appear in predictable corners
+            const shuffledSectors = scatterSectors.sort(() => 0.5 - Math.random());
+
+            selected.forEach((item, idx) => {
+              const coords = shuffledSectors[idx]();
+              const card = document.createElement("a");
+              card.href = `video.html?id=${item.id}&title=${encodeURIComponent(item.title)}&subject=${encodeURIComponent(item.subject)}`;
+              card.className = "scatter-card";
+
+              card.style.top = coords.top;
+              card.style.left = coords.left;
+              card.style.transform = `rotate(${coords.rot}deg)`;
+              card.style.zIndex = idx + 2;
+
+              card.innerHTML = `
+              <div class="scatter-thumb-wrap">
+                <img src="${item.thumb}" alt="${item.title}" class="scatter-thumb" loading="lazy">
+                <span class="scatter-tag">${item.subject}</span>
+                <span class="scatter-date tabular-nums">${item.date}</span>
+              </div>
+              <div class="scatter-info">
+                <div class="scatter-title">${item.title}</div>
+                <div class="scatter-inst">${item.instructor}</div>
+              </div>
+            `;
+
+              // DailyMotion live thumbnail loader
+              if (item.id) {
+                const dmThumb = `https://www.dailymotion.com/thumbnail/video/${item.id}`;
+                const testImg = new Image();
+                testImg.onload = () => {
+                  const target = card.querySelector('.scatter-thumb');
+                  if (target) target.src = dmThumb;
+                };
+                testImg.src = dmThumb;
+              }
+
+              scatterContainer.appendChild(card);
+            });
+          }
+
+        renderScatterCards();
+        }
+
+        // Render Subjects
+        subjects.forEach(s => {
+          const a = document.createElement("a");
+          a.href = s.link;
+          a.className = "s-card";
+          a.innerHTML = `
           <div class="thumb-wrap">
             <img class="thumb" loading="lazy" src="${s.thumbnail}" alt="${s.name}">
-            <div class="v-badge">VIDEO LECTURES</div>
           </div>
           <div class="body">
             <span class="name">${s.name}</span>
-            <span class="arrow">
+            <span class="arrow" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -61,21 +170,20 @@
             </span>
           </div>
         `;
-        subjectContainer.appendChild(a);
-      });
+          subjectContainer.appendChild(a);
+        });
 
-      // Render PDF Section Card
-      const pCard = document.createElement("a");
-      pCard.href = "pages/pdfs.html?name=reasoning";
-      pCard.className = "s-card pdf-card-special";
-      pCard.innerHTML = `
+        // Render PDF Section Card
+        const pCard = document.createElement("a");
+        pCard.href = "pages/pdfs.html?name=reasoning";
+        pCard.className = "s-card pdf-card-special";
+        pCard.innerHTML = `
         <div class="thumb-wrap">
-          <img class="thumb" loading="lazy" src="assets/pdf-thumb.png" alt="PDF Notes">
-          <div class="pdf-badge">PDF NOTES</div>
+          <img class="thumb" loading="lazy" src="assets/pdf-thumb.png" alt="Reasoning PDF Notes">
         </div>
         <div class="body">
           <span class="name">Reasoning PDFs</span>
-          <span class="arrow">
+          <span class="arrow" aria-hidden="true">
              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
@@ -83,8 +191,8 @@
           </span>
         </div>
       `;
-      pdfContainer.appendChild(pCard);
-    });
+        pdfContainer.appendChild(pCard);
+      });
   </script>
 </body>
 
